@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/route/tip_route.dart';
 import 'package:flutter_app/route/tip_route_2.dart';
+import 'package:flutter_app/statemanager/state_manager.dart';
+import 'package:flutter_app/switch_checkbox.dart';
 import 'package:flutter_app/test.dart';
 
 /*void main() => runApp(new MaterialApp(
@@ -25,10 +27,11 @@ class Home extends StatelessWidget {
             title: new Text("1111"),
           ),
           body: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               new Text(
-                'Hello World1',
-                textDirection: TextDirection.rtl,
+                'Hello World1' * 9,
+                textDirection: TextDirection.ltr,
                 style: TextStyle(
                     fontSize: 15,
                     foreground: Paint()..color = Colors.yellow,
@@ -60,7 +63,10 @@ class Home extends StatelessWidget {
                       })),
               new Builder(
                   builder: (context) => new IconButton(
-                      icon: new Icon(Icons.ac_unit,color: Colors.red,),
+                      icon: new Icon(
+                        Icons.ac_unit,
+                        color: Colors.red,
+                      ),
                       onPressed: () {
                         Navigator.of(context).pushNamed("tip_route");
                       })),
@@ -71,6 +77,24 @@ class Home extends StatelessWidget {
                         Navigator.of(context)
                             .push(new MaterialPageRoute(builder: (context) {
                           return new TipRoute();
+                        }));
+                      })),
+              Builder(
+                  builder: (context) => new RaisedButton(
+                      child: Text("状态管理"),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return StateManager();
+                        }));
+                      })),
+              Builder(
+                  builder: (context) => new RaisedButton(
+                      child: Text("选择框"),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return SwitchCheckbox();
                         }));
                       }))
             ],
