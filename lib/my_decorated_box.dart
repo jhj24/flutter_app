@@ -17,15 +17,16 @@ class MyDecoratedBox extends StatelessWidget {
               children: <Widget>[
                 DecoratedBox(
                   decoration: BoxDecoration(
-                      gradient:
-                      LinearGradient(colors: [Colors.red, Colors.orange[700]]),
-                      borderRadius: BorderRadius.circular(5.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black54,
-                            offset: Offset(2.0, 2.0),
-                            blurRadius: 4.0)
-                      ]),
+                    gradient: LinearGradient(
+                        colors: [Colors.red, Colors.orange[700]]),
+                    borderRadius: BorderRadius.circular(5.0),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black54,
+                          offset: Offset(2.0, 2.0),
+                          blurRadius: 4.0)
+                    ],
+                  ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 90),
                     child: Text(
