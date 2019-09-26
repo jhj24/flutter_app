@@ -55,14 +55,20 @@ class _InputTextValidate extends State<InputTextValidate> {
                     return v.trim().length > 0 ? null : "密码不能为空";
                   },
                 ),
-                RaisedButton(
-                    child: Text("登录"),
-                    onPressed: () {
-                      if ((_formKey.currentState).validate()) {
-                        print(_usernameController.text);
-                        print(_passwordController.text);
-                      }
-                    })
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                        child: RaisedButton(
+                            padding: EdgeInsets.all(5),
+                            child: Text("登录"),
+                            onPressed: () {
+                              if ((_formKey.currentState).validate()) {
+                                print(_usernameController.text);
+                                print(_passwordController.text);
+                              }
+                            }))
+                  ],
+                )
               ],
             )),
       ),
