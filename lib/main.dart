@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/decorated_box.dart';
 import 'package:flutter_app/input/input_text.dart';
 import 'package:flutter_app/input/input_text_validate.dart';
+import 'package:flutter_app/my_progress_indicator.dart';
 import 'package:flutter_app/route/tip_route.dart';
 import 'package:flutter_app/route/tip_route_2.dart';
 import 'package:flutter_app/statemanager/state_manager.dart';
 import 'package:flutter_app/switch_checkbox.dart';
-import 'package:flutter_app/my_progress_indicator.dart';
 
 /*void main() => runApp(new MaterialApp(
       title: 'title',
@@ -31,24 +32,6 @@ class Home extends StatelessWidget {
           body: new Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              new Text(
-                'Hello World1' * 9,
-                textDirection: TextDirection.ltr,
-                style: TextStyle(
-                    fontSize: 15,
-                    foreground: Paint()..color = Colors.yellow,
-                    decorationColor: Colors.yellow,
-                    background: Paint()..color = Colors.blue),
-              ),
-              new Icon(
-                Icons.ac_unit,
-                color: Colors.yellow,
-                textDirection: TextDirection.rtl,
-              ),
-              new Image.asset(
-                "assets/images/ic_avatar.png",
-                width: 100,
-              ),
               new Builder(
                   builder: (context) => Column(
                         children: <Widget>[
@@ -67,14 +50,6 @@ class Home extends StatelessWidget {
                                     .push(MaterialPageRoute(builder: (context) {
                                   return InputTextValidate();
                                 }));
-                              }),
-                          IconButton(
-                              icon: new Icon(
-                                Icons.ac_unit,
-                                color: Colors.red,
-                              ),
-                              onPressed: () {
-                                Navigator.of(context).pushNamed("tip_route");
                               }),
                           RaisedButton(
                               child: new Text("路由界面"),
@@ -100,9 +75,20 @@ class Home extends StatelessWidget {
                                   return SwitchCheckbox();
                                 }));
                               }),
-                          RaisedButton(child: Text("进度指示器"), onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                              return MyProgressIndicator();
+                          RaisedButton(
+                              child: Text("进度指示器"),
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return MyProgressIndicator();
+                                }));
+                              }),
+                          RaisedButton(
+                              child: Text("装饰容器"),
+                              onPressed: () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (context) {
+                              return MyDecoratedBox();
                             }));
                           })
                         ],
