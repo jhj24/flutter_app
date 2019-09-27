@@ -110,7 +110,14 @@ class Home extends StatelessWidget {
                                   return MyScaffold();
                                 }));
                               }),
-
+                          RaisedButton(
+                            child: Text("菜单栏"),
+                            onPressed: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context){
+                                return MyTabBar();
+                              }));
+                            },
+                          ),
                         ],
                       )),
             ],
