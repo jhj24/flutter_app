@@ -44,6 +44,31 @@ class _MyTabBar extends State<MyTabBar> with SingleTickerProviderStateMixin {
             );
           }).toList(),
         ),
+        //打洞位置在底部导航栏的正中间
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton(
+            //悬浮按钮
+            child: Icon(Icons.add),
+            onPressed: () {}),
+        //底部导航栏
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.white,
+          shape: CircularNotchedRectangle(),
+          child: Row(
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.home),
+                onPressed: () {},
+              ),
+              SizedBox(), //中间位置空出
+              IconButton(
+                icon: Icon(Icons.business),
+                onPressed: () {},
+              ),
+            ],
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          ),
+        ),
       ),
     );
   }
