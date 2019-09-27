@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/my_decorated_box.dart';
 import 'package:flutter_app/input/input_text.dart';
 import 'package:flutter_app/input/input_text_validate.dart';
+import 'package:flutter_app/my_decorated_box.dart';
 import 'package:flutter_app/my_progress_indicator.dart';
+import 'package:flutter_app/my_scaffold.dart';
+import 'package:flutter_app/my_tab_bar.dart';
 import 'package:flutter_app/my_transform.dart';
 import 'package:flutter_app/route/tip_route.dart';
 import 'package:flutter_app/route/tip_route_2.dart';
@@ -99,7 +101,16 @@ class Home extends StatelessWidget {
                                     .push(MaterialPageRoute(builder: (context) {
                                   return MyTransform();
                                 }));
-                              })
+                              }),
+                          RaisedButton(
+                              child: Text("基础界面"),
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return MyScaffold();
+                                }));
+                              }),
+
                         ],
                       )),
             ],
