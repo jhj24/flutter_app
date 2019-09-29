@@ -5,6 +5,7 @@ import 'package:flutter_app/my_decorated_box.dart';
 import 'package:flutter_app/my_progress_indicator.dart';
 import 'package:flutter_app/my_scaffold.dart';
 import 'package:flutter_app/my_tab_bar.dart';
+import 'package:flutter_app/my_theme.dart';
 import 'package:flutter_app/my_transform.dart';
 import 'package:flutter_app/return_back.dart';
 import 'package:flutter_app/route/tip_route.dart';
@@ -163,6 +164,19 @@ class Home extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) {
                         return ReturnBack();
+                      },
+                    ),
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text("主题切换"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return MyTheme();
                       },
                     ),
                   );
