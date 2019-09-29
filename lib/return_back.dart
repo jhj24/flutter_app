@@ -13,12 +13,21 @@ class _ReturnBack extends State<ReturnBack> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      child: Container(
-        alignment: Alignment.center,
-        child: Text("back两次退出"),
+      child: MaterialApp(
+        title: "",
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text("返回键监听"),
+          ),
+          body: Container(
+            alignment: Alignment.center,
+            child: Text("1s内连续点击两次时，退出界面"),
+          ),
+        ),
       ),
       onWillPop: () async {
-        if (null == _lastPress || DateTime.now().difference(_lastPress) > Duration(seconds: 1)) {
+        if (null == _lastPress ||
+            DateTime.now().difference(_lastPress) > Duration(seconds: 1)) {
           _lastPress = DateTime.now();
           return false; // false = 不退出
         }
