@@ -4,6 +4,7 @@ import 'package:flutter_app/async_stream_refresh_ui.dart';
 import 'package:flutter_app/input/input_text.dart';
 import 'package:flutter_app/input/input_text_validate.dart';
 import 'package:flutter_app/my_decorated_box.dart';
+import 'package:flutter_app/my_inherited_widget.dart';
 import 'package:flutter_app/my_progress_indicator.dart';
 import 'package:flutter_app/my_scaffold.dart';
 import 'package:flutter_app/my_tab_bar.dart';
@@ -179,6 +180,19 @@ class Home extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) {
                         return MyTheme();
+                      },
+                    ),
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text("数据共享"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return InheritedWidgetTest();
                       },
                     ),
                   );
