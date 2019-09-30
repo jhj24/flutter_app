@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/async_refresh_ui.dart';
+import 'package:flutter_app/async_stream_refresh_ui.dart';
 import 'package:flutter_app/input/input_text.dart';
 import 'package:flutter_app/input/input_text_validate.dart';
 import 'package:flutter_app/my_decorated_box.dart';
@@ -179,6 +181,28 @@ class Home extends StatelessWidget {
                         return MyTheme();
                       },
                     ),
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text("异步更新UI"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return AsyncRefreshUI();
+                    }),
+                  );
+                },
+              ),
+              RaisedButton(
+                child: Text("StreamBuilder异步更新UI"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return AsyncStreamRefreshUI();
+                    }),
                   );
                 },
               )
