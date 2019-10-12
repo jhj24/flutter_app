@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/async_refresh_ui.dart';
 import 'package:flutter_app/async_stream_refresh_ui.dart';
 import 'package:flutter_app/dialog/my_alert_dialog.dart';
+import 'package:flutter_app/gesture/drag.dart';
+import 'package:flutter_app/gesture/my_gesture.dart';
+import 'package:flutter_app/gesture/scale.dart';
 import 'package:flutter_app/input/input_text.dart';
 import 'package:flutter_app/input/input_text_validate.dart';
 import 'package:flutter_app/my_decorated_box.dart';
 import 'package:flutter_app/my_inherited_widget.dart';
+import 'package:flutter_app/gesture/my_listener.dart';
 import 'package:flutter_app/my_progress_indicator.dart';
 import 'package:flutter_app/my_scaffold.dart';
 import 'package:flutter_app/my_tab_bar.dart';
@@ -30,212 +34,71 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
+      home: NewHome(),
     );
   }
 }
 
-class Home extends StatelessWidget {
+class NewHome extends StatelessWidget {
+  var _list = [
+    Model(text: "输入框", widget: InputText()),
+    Model(text: "自动校验的输入框", widget: InputTextValidate()),
+    Model(text: "路由界面", widget: TipRoute()),
+    Model(text: "状态管理", widget: StateManager()),
+    Model(text: "选择框", widget: SwitchCheckbox()),
+    Model(text: "进度指示器", widget: MyProgressIndicator()),
+    Model(text: "装饰容器", widget: MyDecoratedBox()),
+    Model(text: "变换", widget: MyTransform()),
+    Model(text: "基础界面", widget: MyScaffold()),
+    Model(text: "菜单栏", widget: MyTabBar()),
+    Model(text: "SingleChildScrollView", widget: MySingleChildScrollView()),
+    Model(text: "默认构造方式的ListView", widget: MyListView()),
+    Model(text: "ListView.Builder", widget: MyListViewBuilder()),
+    Model(text: "ListView.Separated", widget: MyListViewSeparated()),
+    Model(text: "返回键", widget: ReturnBack()),
+    Model(text: "主题切换", widget: MyTheme()),
+    Model(text: "数据共享", widget: InheritedWidgetTest()),
+    Model(text: "异步更新UI", widget: AsyncRefreshUI()),
+    Model(text: "StreamBuilder异步更新UI", widget: AsyncStreamRefreshUI()),
+    Model(text: "Dialog", widget: MyAlertDialog()),
+    Model(text: "Listener", widget: MyListener()),
+    Model(text: "Gesture", widget: MyGesture()),
+    Model(text: "Drag", widget: Drag()),
+    Model(text: "Scale", widget: Scale()),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("主页"),
       ),
-      body: Scrollbar(
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              RaisedButton(
-                  child: Text("输入框"),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return InputText();
-                    }));
+      body: ListView.separated(
+          itemBuilder: (context, position) {
+            return ListTile(
+              title: Text(_list[position].text),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return _list[position].widget;
                   }),
-              RaisedButton(
-                  child: new Text("自动校验的输入框"),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return InputTextValidate();
-                    }));
-                  }),
-              RaisedButton(
-                  child: new Text("路由界面"),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(new MaterialPageRoute(builder: (context) {
-                      return new TipRoute();
-                    }));
-                  }),
-              RaisedButton(
-                  child: Text("状态管理"),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return StateManager();
-                    }));
-                  }),
-              RaisedButton(
-                  child: Text("选择框"),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return SwitchCheckbox();
-                    }));
-                  }),
-              RaisedButton(
-                  child: Text("进度指示器"),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return MyProgressIndicator();
-                    }));
-                  }),
-              RaisedButton(
-                  child: Text("装饰容器"),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return MyDecoratedBox();
-                    }));
-                  }),
-              RaisedButton(
-                  child: Text("变换"),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return MyTransform();
-                    }));
-                  }),
-              RaisedButton(
-                  child: Text("基础界面"),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return MyScaffold();
-                    }));
-                  }),
-              RaisedButton(
-                child: Text("菜单栏"),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return MyTabBar();
-                  }));
-                },
-              ),
-              RaisedButton(
-                child: Text("SingleChildScrollView"),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return MySingleChildScrollView();
-                  }));
-                },
-              ),
-              RaisedButton(
-                  child: Text("默认构造方式的ListView"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return MyListView();
-                    }));
-                  }),
-              RaisedButton(
-                  child: Text("ListView.Builder"),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return MyListViewBuilder();
-                    }));
-                  }),
-              RaisedButton(
-                  child: Text("ListView.Separated"),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) {
-                        return MyListViewSeparated();
-                      }),
-                    );
-                  }),
-              RaisedButton(
-                child: Text("返回键"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return ReturnBack();
-                      },
-                    ),
-                  );
-                },
-              ),
-              RaisedButton(
-                child: Text("主题切换"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return MyTheme();
-                      },
-                    ),
-                  );
-                },
-              ),
-              RaisedButton(
-                child: Text("数据共享"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return InheritedWidgetTest();
-                      },
-                    ),
-                  );
-                },
-              ),
-              RaisedButton(
-                child: Text("异步更新UI"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return AsyncRefreshUI();
-                    }),
-                  );
-                },
-              ),
-              RaisedButton(
-                child: Text("StreamBuilder异步更新UI"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return AsyncStreamRefreshUI();
-                    }),
-                  );
-                },
-              ),
-              RaisedButton(
-                child: Text("Dialog"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return MyAlertDialog();
-                    }),
-                  );
-                },
-              )
-            ],
-          ),
-        ),
-      ),
+                );
+              },
+            );
+          },
+          separatorBuilder: (context, position) {
+            return Divider();
+          },
+          itemCount: _list.length),
     );
   }
+}
+
+class Model {
+  Model({this.text, this.widget});
+
+  String text;
+  Widget widget;
 }
