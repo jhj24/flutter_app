@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/animation/my_animation.dart';
+import 'package:flutter_app/animation/my_animation_widget.dart';
 import 'package:flutter_app/async_refresh_ui.dart';
 import 'package:flutter_app/async_stream_refresh_ui.dart';
 import 'package:flutter_app/dialog/my_alert_dialog.dart';
 import 'package:flutter_app/gesture/drag.dart';
 import 'package:flutter_app/gesture/my_gesture.dart';
+import 'package:flutter_app/gesture/my_listener.dart';
 import 'package:flutter_app/gesture/scale.dart';
 import 'package:flutter_app/input/input_text.dart';
 import 'package:flutter_app/input/input_text_validate.dart';
 import 'package:flutter_app/my_decorated_box.dart';
 import 'package:flutter_app/my_inherited_widget.dart';
-import 'package:flutter_app/gesture/my_listener.dart';
 import 'package:flutter_app/my_progress_indicator.dart';
 import 'package:flutter_app/my_scaffold.dart';
 import 'package:flutter_app/my_tab_bar.dart';
@@ -65,6 +67,8 @@ class NewHome extends StatelessWidget {
     Model(text: "Gesture", widget: MyGesture()),
     Model(text: "Drag", widget: Drag()),
     Model(text: "Scale", widget: Scale()),
+    Model(text: "动画0", widget: MyAnimation()),
+    Model(text: "动画1", widget: MyAnimationWidget())
   ];
 
   @override
